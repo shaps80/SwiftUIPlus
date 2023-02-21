@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftuibackports",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/shaps80/SwiftUIBackports",
+      "state" : {
+        "revision" : "af01b159d9d242245e55fd1f1c04c21d496e13a6",
+        "version" : "1.13.0"
+      }
+    }
+  ],
+  "version" : 2
+}

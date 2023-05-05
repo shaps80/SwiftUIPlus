@@ -1,12 +1,13 @@
 import SwiftUI
 import SwiftUIBackports
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+#if os(iOS) || os(macOS)
+@available(iOS 15, macOS 13, *)
 public extension TextSliderStyle where Self == BorderedTextSliderStyle {
     static var bordered: Self { .init() }
 }
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+@available(iOS 15, macOS 13, *)
 public struct BorderedTextSliderStyle: TextSliderStyle {
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -25,3 +26,4 @@ public struct BorderedTextSliderStyle: TextSliderStyle {
             }
     }
 }
+#endif

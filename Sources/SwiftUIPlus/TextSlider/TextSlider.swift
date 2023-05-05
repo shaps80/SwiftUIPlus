@@ -1,6 +1,7 @@
 import SwiftUI
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+#if os(iOS) || os(macOS)
+@available(iOS 15, macOS 13, *)
 public extension TextSlider {
     /// Creates a new text-based slider
     /// - Parameters:
@@ -102,7 +103,7 @@ public extension TextSlider {
 ///         .keyboardType(.numberPad)
 ///         .textSliderStyle(.bordered)
 ///
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+@available(iOS 15, macOS 13, *)
 public struct TextSlider: View {
     private static let defaultFormat: FloatingPointFormatStyle<Double>
     = .number.precision(.fractionLength(0...1))
@@ -144,3 +145,4 @@ public struct TextSlider: View {
         #endif
     }
 }
+#endif

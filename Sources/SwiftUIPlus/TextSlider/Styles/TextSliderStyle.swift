@@ -1,13 +1,14 @@
 import SwiftUI
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+#if os(iOS) || os(macOS)
+@available(iOS 15, macOS 13, *)
 public protocol TextSliderStyle {
     associatedtype Body: View
     typealias Configuration = TextSliderConfiguration
     @ViewBuilder func makeBody(configuration: Configuration) -> Body
 }
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+@available(iOS 15, macOS 13, *)
 public struct TextSliderConfiguration {
     struct Label: View {
         let configuration: TextSliderConfiguration
@@ -37,12 +38,12 @@ public struct TextSliderConfiguration {
     }
 }
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+@available(iOS 15, macOS 13, *)
 private struct TextSliderStyleEnvironmentKey: EnvironmentKey {
     public static var defaultValue: any TextSliderStyle { PlainTextSliderStyle() }
 }
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+@available(iOS 15, macOS 13, *)
 internal extension EnvironmentValues {
     var textSliderStyle: any TextSliderStyle {
         get { self[TextSliderStyleEnvironmentKey.self] }
@@ -50,9 +51,10 @@ internal extension EnvironmentValues {
     }
 }
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+@available(iOS 15, macOS 13, *)
 public extension View {
     func textSliderStyle<S>(_ style: S) -> some View where S: TextSliderStyle {
         environment(\.textSliderStyle, style)
     }
 }
+#endif

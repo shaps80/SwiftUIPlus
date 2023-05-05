@@ -1,7 +1,8 @@
 import SwiftUI
 import SwiftUIBackports
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+#if os(iOS) || os(macOS)
+@available(iOS 15, macOS 13, *)
 internal struct TextSliderField: View {
     private static let defaultFormat: FloatingPointFormatStyle<Double>
     = .number.precision(.fractionLength(0...1))
@@ -117,7 +118,7 @@ internal struct TextSliderField: View {
     }
 }
 
-@available(iOS 15, macOS 13, tvOS 15, watchOS 8, *)
+@available(iOS 15, macOS 13, *)
 private extension TextSliderField {
     var normalizedValue: CGFloat {
         adjustedValue.map(from: bounds, to: 0...1)
@@ -151,3 +152,4 @@ internal extension ClosedRange where Bound: FloatingPoint {
         return min...max
     }
 }
+#endif

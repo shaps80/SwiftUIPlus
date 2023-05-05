@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftUIBackports
 
 #if os(iOS) || os(macOS)
-@available(iOS 15, macOS 13, *)
+@available(iOS 15, macOS 12, *)
 internal struct TextSliderField: View {
     private static let logicalWidth: CGFloat = 320
 
@@ -116,7 +116,7 @@ internal struct TextSliderField: View {
     }
 }
 
-@available(iOS 15, macOS 13, *)
+@available(iOS 15, macOS 12, *)
 private extension TextSliderField {
     var normalizedValue: CGFloat {
         adjustedValue.map(from: bounds, to: 0...1)

@@ -4,8 +4,6 @@ import SwiftUIBackports
 #if os(iOS) || os(macOS)
 @available(iOS 15, macOS 13, *)
 internal struct TextSliderField: View {
-    private static let defaultFormat: FloatingPointFormatStyle<Double>
-    = .number.precision(.fractionLength(0...1))
     private static let logicalWidth: CGFloat = 320
 
     @State private var adjustedValue: Double
@@ -25,7 +23,7 @@ internal struct TextSliderField: View {
         _value = value
         self.bounds = bounds
         self.step = step
-        self.format = format ?? .number.precision(.fractionLength(0...1)).grouping(.never)
+        self.format = format ?? TextSlider.defaultFormat
     }
 
     public var body: some View {

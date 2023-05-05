@@ -6,7 +6,7 @@ public extension TextSlider {
     /// Creates a new text-based slider
     /// - Parameters:
     ///   - value: A binding to the current value representing this slider's position in the specified bounds
-    ///   - bounds: A bounding range used to represent the minimum and maximum values this slider can represent
+    ///   - bounds: A bounding range used to represent the minimum and maximum values this slider can represent. Defaults to `0...1`
     ///   - format: A format style  to use when converting between the string the user edits and the underlying value of type.
     init<Value>(value: Binding<Value>, in bounds: ClosedRange<Value> = 0...1, format: FloatingPointFormatStyle<Double>? = nil) where Value: BinaryFloatingPoint, Value.Stride: BinaryFloatingPoint {
         self.init(
@@ -28,7 +28,7 @@ public extension TextSlider {
     /// Creates a new text-based slider
     /// - Parameters:
     ///   - value: A binding to the current value representing this slider's position in the specified bounds
-    ///   - bounds: A bounding range used to represent the minimum and maximum values this slider can represent
+    ///   - bounds: A bounding range used to represent the minimum and maximum values this slider can represent. Defaults to `0...1`
     ///   - format: A format style  to use when converting between the string the user edits and the underlying value of type.
     init<Value>(value: Binding<Value>, in bounds: ClosedRange<Value> = 0...1, format: FloatingPointFormatStyle<Double>? = nil) where Value: BinaryInteger, Value.Stride: BinaryFloatingPoint {
         self.init(
@@ -51,7 +51,7 @@ public extension TextSlider {
     /// - Parameters:
     ///   - value: A binding to the current value representing this slider's position in the specified bounds
     ///   - bounds: A bounding range used to represent the minimum and maximum values this slider can represent
-    ///   - step: A value representing the increment/decrement value used when adjusting this slider's value
+    ///   - step: A value representing the increment/decrement value used when adjusting this slider's value. Defaults to `1`
     ///   - format: A format style  to use when converting between the string the user edits and the underlying value of type.
     init<Value>(value: Binding<Value>, in bounds: ClosedRange<Value>, step: Value.Stride = 1, format: FloatingPointFormatStyle<Double>? = nil) where Value: BinaryFloatingPoint, Value.Stride: BinaryFloatingPoint {
         self.init(
@@ -74,7 +74,7 @@ public extension TextSlider {
     /// - Parameters:
     ///   - value: A binding to the current value representing this slider's position in the specified bounds
     ///   - bounds: A bounding range used to represent the minimum and maximum values this slider can represent
-    ///   - step: A value representing the increment/decrement value used when adjusting this slider's value
+    ///   - step: A value representing the increment/decrement value used when adjusting this slider's value. Defaults to `1`
     ///   - format: A format style  to use when converting between the string the user edits and the underlying value of type.
     init<Value>(value: Binding<Value>, in bounds: ClosedRange<Value>, step: Value.Stride = 1, format: FloatingPointFormatStyle<Double>? = nil) where Value: BinaryInteger, Value.Stride: BinaryFloatingPoint {
         self.init(
@@ -105,8 +105,8 @@ public extension TextSlider {
 ///
 @available(iOS 15, macOS 13, *)
 public struct TextSlider: View {
-    private static let defaultFormat: FloatingPointFormatStyle<Double>
-    = .number.precision(.fractionLength(0...1))
+    internal static let defaultFormat: FloatingPointFormatStyle<Double>
+    = .number.precision(.fractionLength(0...1)).grouping(.never)
 
     /// Represents the current phase the slider is in
     public enum Phase: Equatable {

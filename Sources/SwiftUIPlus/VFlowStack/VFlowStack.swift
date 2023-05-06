@@ -212,7 +212,9 @@ struct FlowLayout_Previews: PreviewProvider {
                 Text("Foobar")
             }
             .padding(4)
+            #if os(iOS)
             .background(.bar, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+            #endif
         }
         .padding()
         .frame(width: 200)

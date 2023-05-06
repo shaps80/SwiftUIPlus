@@ -20,7 +20,25 @@ You can also give me a follow and a 'thanks' anytime.
 
 ## Additions
 
-#### Containers
+#### FittingGeometryReader
+
+A `GeometryReader` that auto-sizes itself, enabling you to size your content automatically, while still gaining access to the proxy's values like its runtime size.
+
+#### Scrollable Stacks
+
+- `VScrollStack` – Wraps a `VStack` in a `ScrollView` while still respecting elements like `Spacer`
+- `HScrollStack` – Wraps an `HStack` in a `ScrollView` while still respecting elements like `Spacer`
+
+#### TextSlider
+
+A new text-based slider that provides gestural interactions via drag operations, as well as direct keyboard entry for more specific values. In addition it supports a styling API for custom designs.
+
+#### VFlowStack
+
+A vertical line-based stack view that lays out its children horizontally until they no longer fit at which point it begins “wrapping” the children onto a new line.
+
+> Similar to UICollectionViewFlowLayout
+
 
 Various containers that provide a richer set of customizations than currently provided by SwiftUI itself.
 

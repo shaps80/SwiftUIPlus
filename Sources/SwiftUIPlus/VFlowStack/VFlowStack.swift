@@ -64,7 +64,7 @@ struct VFlowLayout: Layout {
                 return CGSize(width: width, height: height)
             }
 
-            func fitting(size: CGSize, proposal: ProposedViewSize, spacing: CGFloat) -> Bool {
+            func fitting(size: CGSize, proposal: SwiftUI.ProposedViewSize, spacing: CGFloat) -> Bool {
                 let availableWidth = proposal.replacingUnspecifiedDimensions().width
                 return size.width < availableWidth - (contentSize.width + spacing)
             }
@@ -84,7 +84,7 @@ struct VFlowLayout: Layout {
 
     let positioning: VFlowPositioning
 
-    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout Cache) -> CGSize {
+    func sizeThatFits(proposal: SwiftUI.ProposedViewSize, subviews: Subviews, cache: inout Cache) -> CGSize {
         guard !subviews.isEmpty else { return .zero }
 
         cache.lines.removeAll()
@@ -106,7 +106,7 @@ struct VFlowLayout: Layout {
         return cache.contentSize
     }
 
-    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout Cache) {
+    func placeSubviews(in bounds: CGRect, proposal: SwiftUI.ProposedViewSize, subviews: Subviews, cache: inout Cache) {
         var index: Int = 0
         var minY: CGFloat = 0
 

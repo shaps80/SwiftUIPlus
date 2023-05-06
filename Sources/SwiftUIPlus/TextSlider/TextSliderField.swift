@@ -33,6 +33,7 @@ internal struct TextSliderField: View {
             format: format,
             prompt: Text(value, format: format)
         )
+        .textFieldStyle(.plain)
         .focused($focus)
         .overlay {
             if !focus {

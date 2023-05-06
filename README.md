@@ -26,8 +26,8 @@ A `GeometryReader` that auto-sizes itself, enabling you to size your content aut
 
 #### Scrollable Stacks
 
-__VScrollStack__ – Wraps a `VStack` in a `ScrollView` while still respecting elements like `Spacer`
-__HScrollStack__ – Wraps an `HStack` in a `ScrollView` while still respecting elements like `Spacer`
+- `VScrollStack` – Wraps a `VStack` in a `ScrollView` while still respecting elements like `Spacer`
+- `HScrollStack` – Wraps an `HStack` in a `ScrollView` while still respecting elements like `Spacer`
 
 #### TextSlider
 

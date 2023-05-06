@@ -26,8 +26,8 @@ A `GeometryReader` that auto-sizes itself, enabling you to size your content aut
 
 #### Scrollable Stacks
 
-- `VScrollStack` – Wraps a `VStack` in a `ScrollView` while still respecting elements like `Spacer`
-- `HScrollStack` – Wraps an `HStack` in a `ScrollView` while still respecting elements like `Spacer`
+__VScrollStack__ – Wraps a `VStack` in a `ScrollView` while still respecting elements like `Spacer`
+__HScrollStack__ – Wraps an `HStack` in a `ScrollView` while still respecting elements like `Spacer`
 
 #### TextSlider
 
@@ -39,8 +39,31 @@ A vertical line-based stack view that lays out its children horizontally until t
 
 > Similar to UICollectionViewFlowLayout
 
+####
 
-Various containers that provide a richer set of customizations than currently provided by SwiftUI itself.
+__Haptics and Feedback__
+
+Supports various familiar animation-inspired APIs for attaching haptics and other feedback (audio, flash, etc) to state changes.
+
+As a convenience the API provides `haptic` focused APIs.
+
+- `withHaptic(.selection) { }`
+- `body.haptic(.selection) { }`
+
+However you can also use the `withFeedback` and `feedback` APIs to gain more control and access to other feedback methods. In particular you can combine methods to provide more complex feedback to the user.
+
+```
+withFeedback(
+    .haptic(.selection)
+    .combined(with: 
+        .audio(.focusChangeSmall)
+    )
+)
+```
+
+> This example will play a short audio file, while providing haptic feedback (where supported)
+
+Also note, the Feedback Audio APIs provide simplified access to almost all built-in audio files for your convenience.
 
 ## Dependencies
 

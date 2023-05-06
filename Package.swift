@@ -23,7 +23,9 @@ let package = Package(
     targets: [
         .target(
             name: "SwiftUIPlus",
-            dependencies: ["SwiftUIBackports"]
+            dependencies: [
+                .byName(name: "SwiftUIBackports"),
+            ]
         )
     ]
 )

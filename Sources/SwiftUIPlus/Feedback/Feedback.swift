@@ -1,4 +1,6 @@
 import SwiftUI
+import SwiftUIBackports
+
 #if canImport(CoreHaptics)
 import CoreHaptics
 #endif

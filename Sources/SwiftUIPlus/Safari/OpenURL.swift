@@ -52,7 +52,14 @@ public extension OpenURLAction.Result {
         controller.preferredControlTintColor = UIColor(config.tintColor)
         controller.dismissButtonStyle = config.dismissStyle.buttonStyle
 
-        if window?.traitCollection.horizontalSizeClass == .regular {
+        switch config.presentationStyle {
+        case .automatic:
+            if window?.traitCollection.horizontalSizeClass == .regular {
+                controller.modalPresentationStyle = .pageSheet
+            }
+        case .fullScreenCover:
+            controller.modalPresentationStyle = .fullScreen
+        case .sheet:
             controller.modalPresentationStyle = .pageSheet
         }
 
@@ -75,10 +82,17 @@ public extension OpenURLAction.Result {
             }
         }
 
+        public enum PresentationStyle {
+            case automatic
+            case sheet
+            case fullScreenCover
+        }
+
         public var prefersReader: Bool = false
         public var barCollapsingEnabled: Bool = true
         public var dismissStyle: DismissStyle = .done
         public var tintColor: Color = .accentColor
+        public var presentationStyle: PresentationStyle = .automatic
     }
 #endif
 }

@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftUIBackports
 
 #if os(iOS) || os(macOS)
 @available(iOS 15, macOS 12, *)

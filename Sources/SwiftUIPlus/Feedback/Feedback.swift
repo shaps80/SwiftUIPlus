@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftUIBackports
 
 #if canImport(CoreHaptics)
 import CoreHaptics
@@ -63,9 +62,16 @@ internal struct FeedbackModifier<V: Equatable>: ViewModifier {
     let value: V
 
     func body(content: Content) -> some View {
-        content
-            .backport.onChange(of: value) { value in
-                Task { await feedback.perform() }
-            }
+        if #available(iOS 14, macOS 11, *) {
+            content
+                .onChange(of: value) { value in
+                    Task { await feedback.perform() }
+                }
+        } else {
+            content
+                .backport.onChange(of: value) { value in
+                    Task { await feedback.perform() }
+                }
+        }
     }
 }

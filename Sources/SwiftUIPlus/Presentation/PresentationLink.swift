@@ -209,8 +209,18 @@ private struct PresentationModifier: ViewModifier {
                 content
                     .sheet(item: $item) { destination($0.value) }
             case .fullScreenCover:
+#if os(iOS) || os(tvOS)
+                if #available(iOS 14, tvOS 14, *) {
+                    content
+                        .fullScreenCover(item: $item) { destination($0.value) }
+                } else {
+                    content
+                        .sheet(item: $item) { destination($0.value) }
+                }
+#else
                 content
-                    .fullScreenCover(item: $item) { destination($0.value) }
+                    .sheet(item: $item) { destination($0.value) }
+#endif
             }
         }
         .environment(\.presentationDestinations, [

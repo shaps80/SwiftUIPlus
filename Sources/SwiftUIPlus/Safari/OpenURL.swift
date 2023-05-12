@@ -3,7 +3,7 @@ import SwiftUI
 import SafariServices
 #endif
 
-@available(iOS 15, macOS 12, *)
+@available(iOS 15, tvOS 15, macOS 12, watchOS 8, *)
 @MainActor
 public extension OpenURLAction.Result {
     static func safari(_ url: URL) -> Self {

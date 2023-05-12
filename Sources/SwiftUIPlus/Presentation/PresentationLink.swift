@@ -87,7 +87,11 @@ public struct PresentationLink<Label>: View where Label: View {
 
     public var body: some View {
         Button {
-            destinations[valueType]?.binding.wrappedValue = value
+            if destinations[valueType] != nil {
+                destinations[valueType]?.binding.wrappedValue = value
+            } else {
+                print("A PresentationLink is presenting a value of type “\(valueType.type)” but there is no matching presentationDestination declaration visible from the location of the link. The link cannot be activated")
+            }
         } label: {
             label
         }
@@ -205,18 +209,8 @@ private struct PresentationModifier: ViewModifier {
                 content
                     .sheet(item: $item) { destination($0.value) }
             case .fullScreenCover:
-#if os(iOS) || os(tvOS)
-                if #available(iOS 14, tvOS 14, *) {
-                    content
-                        .fullScreenCover(item: $item) { destination($0.value) }
-                } else {
-                    content
-                        .sheet(item: $item) { destination($0.value) }
-                }
-#else
                 content
-                    .sheet(item: $item) { destination($0.value) }
-#endif
+                    .fullScreenCover(item: $item) { destination($0.value) }
             }
         }
         .environment(\.presentationDestinations, [

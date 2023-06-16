@@ -17,7 +17,10 @@ let package = Package(
             targets: ["SwiftUIPlus"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/shaps80/SwiftUIBackports", from: "2.7.0")
+    ],
     targets: [
-        .target(name: "SwiftUIPlus")
+        .target(name: "SwiftUIPlus", dependencies: ["SwiftUIBackports"])
     ]
 )

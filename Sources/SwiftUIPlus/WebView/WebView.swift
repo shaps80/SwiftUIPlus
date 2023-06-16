@@ -11,7 +11,7 @@ import WebKit
 import SwiftUIBackports
 #endif
 
-public struct WebView: View {
+internal struct WebView: View {
     @Environment(\.backportDismiss) private var dismiss
     @Environment(\.backportOpenURL) private var openUrl
     @Environment(\.self) private var environment

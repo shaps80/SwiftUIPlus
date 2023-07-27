@@ -211,11 +211,13 @@ extension View {
 private struct Representable: UIViewControllerRepresentable {
     let host: WebView
 
-    func makeUIViewController(context: Context) -> UIViewController {
+    func makeUIViewController(context: Context) -> WebController {
         WebController(host: host)
     }
 
-    func updateUIViewController(_ controller: UIViewController, context: Context) { }
+    func updateUIViewController(_ controller: WebController, context: Context) {
+        controller.update(host: host)
+    }
 }
 
 private final class WebController: UIViewController {

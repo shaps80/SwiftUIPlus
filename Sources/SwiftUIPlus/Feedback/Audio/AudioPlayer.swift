@@ -21,13 +21,11 @@ internal final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDeleg
 
         try AVAudioSession.sharedInstance().setCategory(.ambient)
         try AVAudioSession.sharedInstance().setActive(true)
-        
+#endif
+
         player = try AVAudioPlayer(contentsOf: audio.url)
         player?.delegate = self
         player?.play()
-#else
-#warning("macOS audio not implemented")
-#endif
     }
     
     @MainActor
@@ -36,10 +34,8 @@ internal final class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDeleg
         player = nil
     }
 
-#if os(iOS)
     @MainActor
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         Task { await stop() }
     }
-#endif
 }

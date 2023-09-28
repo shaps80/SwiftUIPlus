@@ -1,6 +1,7 @@
 import SwiftUI
 
 @available(iOS 14, *)
+@available(macOS, unavailable)
 public extension AnyFeedback {
     /// Specifies feedback that flashes the screen
     static var flash: Self {
@@ -17,6 +18,7 @@ public extension AnyFeedback {
 }
 
 @available(iOS 14, *)
+@available(macOS, unavailable)
 private struct Flash: Feedback {
     var color: Color
     var duration: Double
@@ -44,8 +46,6 @@ private struct Flash: Feedback {
                 view.removeFromSuperview()
             }
         }
-#else
-#warning("macOS flash not implemented")
 #endif
     }
 
